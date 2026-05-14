@@ -1,0 +1,75 @@
+.cw-dot-menu {
+    display: inline-block;
+    vertical-align: middle;
+
+    .tippy-tooltip.dot-menu-theme {
+        padding: 0;
+    }
+}
+
+.dot-menu-list {
+    margin: 0;
+    padding: 5px 0;
+    min-width: 50px;
+    list-style: none;
+}
+
+.dot-menu-list .dot-menu-item {
+    padding: 0 10px;
+    font-size: 12px;
+    line-height: 26px;
+    cursor: pointer;
+
+    &:hover {
+        background-color: #eaf3ff;
+        color: #3a84ff;
+    }
+}
+
+.round-color {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.line-color {
+    width: 4px;
+    height: 14px;
+    border-radius: 2px;
+    display: inline-block;
+    margin-right: 10px;
+}
+//成功
+.success {
+    background-color: #2DCB56;
+}
+//失败
+.fail {
+    background-color: #EA3636;
+}
+//暂停
+.pause {
+    background-color: #C4C6CC;
+}
+//终止
+.stop {
+    background-color: #FFD695;
+}
+//错误
+.error {
+    background-color: #FF8000;
+}
+//提醒
+.info {
+    background-color: #FFD000;
+}
+//致命
+.deadly {
+    background-color: #EA3636;
+}
+//预警
+.warning {
+    background-color: #FF8000;
+}

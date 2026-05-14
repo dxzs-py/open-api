@@ -1,0 +1,43 @@
+spec_version: 2
+app_version: "3.0.0"
+app:
+    region: default
+    bk_app_code: python3_vue_saas
+    bk_app_name: 嘉为蓝鲸开发框架
+    market:
+        category: 企业IT
+        introduction: 嘉为蓝鲸开发框架V3
+        description: 嘉为蓝鲸开发框架V3，基于 python3 开发，内置 vue 组件
+        display_options:
+            height: 720
+            is_max: true
+            width: 1280
+modules:
+  backend:
+    is_default: True
+    language: Python
+    source_dir: ./src
+    services:
+      - name: mysql
+    env_variables:
+      - key: GUNICORN_WORKER_NUM
+        value: 1
+        description: GunicornWorker数量
+      - key: GUNICORN_THREAD_NUM
+        value: 10
+        description: GunicornThread数量
+    scripts:
+      pre_release_hook: "python manage.py migrate --no-input"
+    processes:
+      web:
+        command: bin/start_web.sh
+        plan: 2C2G4R
+        replicas: 2
+      beat:
+          command: python manage.py celery beat -l info
+          plan: 2C1G4R
+          replicas: 1
+      dworker:
+          command: python manage.py celery worker -Q default -n default@%h -P threads -c 10 -l info
+          plan: 2C2G4R
+          replicas: 2
